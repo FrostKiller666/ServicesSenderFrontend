@@ -1,0 +1,18 @@
+.card {
+    background-color: #f4f4f5;
+    padding: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.cardOdd {
+    padding: 3rem;
+}
+
+.container {
+    padding-top: 4rem;
+    max-width: 95%;
+}
+.test {
+    width: 35rem;
+    height: 25rem;
+}
