@@ -13,7 +13,7 @@ const UserLogin = () => {
                                 <Form.Label  sm={4}>
                                     Email:
                                 </Form.Label>
-                                <Col sm={10}>
+                                <Col sm={12}>
                                     <Form.Control type="email" placeholder="Email" />
                                 </Col>
                             </Form.Group>
@@ -22,7 +22,7 @@ const UserLogin = () => {
                                 <Form.Label sm={4}>
                                     Hasło:
                                 </Form.Label>
-                                <Col sm={10}>
+                                <Col sm={12}>
                                     <Form.Control type="password" placeholder="Hasło" />
                                 </Col>
                             </Form.Group>
