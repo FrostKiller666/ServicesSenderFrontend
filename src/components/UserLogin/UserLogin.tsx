@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
+import {Button, Col, Container, Form, Row} from "react-bootstrap";
 
 import styles from "./UserLogin.module.css";
 
@@ -26,7 +26,7 @@ const UserLogin = () => {
                                     <Form.Control type="password" placeholder="Hasło" />
                                 </Col>
                             </Form.Group>
-                            <p className={'mb-0 '}>Nie masz konta? <a href={'/'}>Załóż Nowe</a></p>
+                            <p className={'mb-0 '}>Nie masz konta? <a href={'/user/register'}>Załóż Nowe</a></p>
                             <p className={'mb-4 '}>Nie pamiętasz hasła? <a href={'/'}>Zresetuj</a> </p>
                             <Form.Group as={Row} className="mb-3">
                                 <Col sm={{span: 10}}>

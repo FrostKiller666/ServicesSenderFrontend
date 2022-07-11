@@ -5,6 +5,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import styles from "./UserRegister.module.css";
 import {apiUrl} from "../../config/api";
 
+// @TODO if reusable just move to folder utils
 interface FormRegisterType {
     username: string;
     email: string;
@@ -42,10 +43,11 @@ const UserRegister = () => {
             setLoading(false);
         }
     }
-
+    // @TODO Add spinner for improve user experience
     if (loading) {
         return <h2>Trwa proces rejestracji...</h2>;
     }
+    // @TODO New component UserRegisterSuccess.tsx for redirect to Login site
     if (id) {
         return <h2>Twoje konto u numerze <br/> ID: {id} <br/> zostało utworzone.</h2>
     }
@@ -64,15 +66,15 @@ const UserRegister = () => {
                             <Form.Control type="text" placeholder="nazwa użytkownika" {...register('username', {
                                 required: "To pole nie może być puste!",
                                 minLength: {
-                                    value: 6,
-                                    message: "Nazwa użytkownika musi mieć minimum 6 znaków.",
+                                    value: 4,
+                                    message: "Nazwa użytkownika musi mieć minimum 4 znaków.",
                                 },
                                 maxLength: {
-                                    value: 50,
-                                    message: "Nazwa użytkownika musi mieć maxymalnie 50 znaków"
+                                    value: 25,
+                                    message: "Nazwa użytkownika musi mieć maxymalnie 25 znaków"
                                 },
                             })}/>
-                            {errors.username && <p>{errors.username.message}</p>}
+                            {errors.username && <p className={styles.errorP}>{errors.username.message}</p>}
                         </Col>
                     </Form.Group>
 
@@ -88,7 +90,7 @@ const UserRegister = () => {
                                     message: "Wprowadziłeś niepoprawny adres mailowy."
                                 }
                             })}/>
-                            {errors.email && <p>{errors.email.message}</p>}
+                            {errors.email && <p className={styles.errorP}>{errors.email.message}</p>}
                         </Col>
                     </Form.Group>
 
@@ -115,7 +117,7 @@ const UserRegister = () => {
                                               },
                                           })}
                                           />
-                            {errors.password && <p>{errors.password.message}</p>}
+                            {errors.password && <p className={styles.errorP}>{errors.password.message}</p>}
                         </Col>
                     </Form.Group>
 
@@ -128,7 +130,7 @@ const UserRegister = () => {
                                 validate: value =>
                                     value === password.current || "Hasło jest nieprawidłowe"
                             })}/>
-                            {errors.RePassword && <p>{errors.RePassword.message}</p>}
+                            {errors.RePassword && <p className={styles.errorP}>{errors.RePassword.message}</p>}
                         </Col>
                     </Form.Group>
 

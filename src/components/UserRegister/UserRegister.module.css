@@ -3,13 +3,13 @@
     width: 28rem;
 }
 
-p {
+.errorP {
     color: #bf1650;
     margin: 0;
     padding-top: 10px;
 }
 
-p::before {
+.errorP::before {
     display: inline;
     content: "⚠ ";
 }
