@@ -2,13 +2,14 @@ import React from "react";
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 
 import styles from './Header.module.css'
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
         <>
             <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" className={'sticky-top'}>
                 <Container fluid className={styles.container}>
-                    <Navbar.Brand className={'fs-2 '} href="#home">Services-Sender</Navbar.Brand>
+                    <Navbar.Brand className={'fs-2 '} as={Link} to='/' >Services-Sender</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-5 fs-5 p-0">
