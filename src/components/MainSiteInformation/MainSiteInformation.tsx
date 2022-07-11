@@ -26,13 +26,13 @@ const MainSiteInformation = () => {
                 <Container className={styles.cardOdd}>
                     <Row>
                         <Col>
+                            <Image  src={'https://miro.medium.com/max/576/1*7FgTI6QxrfaZdA2DVg3w0g.png'}/>
+                        </Col>
+                        <Col>
                             <h3 className={'text-center fw-bold'}>Jak używać</h3>
                             <p className={'text-break fs-6'}>
                                 asfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasfasfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                             </p>
-                        </Col>
-                        <Col>
-                            <Image  src={'https://miro.medium.com/max/576/1*7FgTI6QxrfaZdA2DVg3w0g.png'}/>
                         </Col>
                     </Row>
                 </Container>
