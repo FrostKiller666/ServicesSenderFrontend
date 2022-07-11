@@ -1,15 +1,19 @@
 import React from 'react';
+import {Route, Routes} from "react-router";
+
 import {MainUserSite} from "./views/MainUserSite";
-import {UserLogin} from "./components/UserLogin/UserLogin";
-import {LoginUserSite} from "./views/LoginUserSite";
 import {RegisterUserSite} from "./views/RegisterUserSite";
+import {LoginUserSite} from "./views/LoginUserSite";
+
 
 function App() {
   return (
     <>
-       {/*<MainUserSite />*/}
-     {/* <LoginUserSite />*/}
-        <RegisterUserSite />
+        <Routes>
+            <Route path={'/'} element={<MainUserSite/>}/>
+            <Route path={'/user/login'} element={<LoginUserSite/>}/>
+            <Route path={'/user/register'} element={<RegisterUserSite/>}/>
+        </Routes>
     </>
   );
 }

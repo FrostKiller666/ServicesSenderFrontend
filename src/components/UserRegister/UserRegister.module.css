@@ -1,0 +1,15 @@
+.container {
+    margin-top: 5rem;
+    width: 28rem;
+}
+
+p {
+    color: #bf1650;
+    margin: 0;
+    padding-top: 10px;
+}
+
+p::before {
+    display: inline;
+    content: "⚠ ";
+}
