@@ -12,6 +12,7 @@ const LoginUserSite = () => {
 
     useEffect(() => {
         (async () => {
+            try {
                 const res = await fetch(`${apiUrl}/user/auth`, {
                     credentials: "include",
                 });
@@ -20,8 +21,10 @@ const LoginUserSite = () => {
                 if (data.message !== 'Brak autentykacji') {
                     navigate("/", {replace: true});
                 }
+            } finally {
+                setIsLoading(false);
+            }
 
-            setIsLoading(false);
         })();
     }, []);
 

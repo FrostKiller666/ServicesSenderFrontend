@@ -20,7 +20,7 @@ const MainUserSite = () => {
                 const data = await res.json();
 
                 if (data.message === 'Brak autentykacji') {
-                    navigate("/user/login", );
+                    navigate("/user/login", {replace: true});
                 }
                 setUsername(data.username);
             } finally {
