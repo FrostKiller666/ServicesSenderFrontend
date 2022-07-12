@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 import {UserLogin} from "../components/UserLogin/UserLogin";
 import {HeaderLogin} from "../components/Header/HeaderLogin";
@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 
 
 const LoginUserSite = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,14 +20,18 @@ const LoginUserSite = () => {
                 if (data.message !== 'Brak autentykacji') {
                     navigate("/", {replace: true});
                 }
+            setIsLoading(false);
         })();
     }, []);
 
 
     return (
         <>
-            <HeaderLogin />
-            <UserLogin />
+            {isLoading?(<></>):(
+                <><HeaderLogin />
+                    <UserLogin /></>
+            )}
+
         </>
     );
 }
