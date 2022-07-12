@@ -22,8 +22,6 @@ const MainUserSite = () => {
                     navigate("/user/login", {replace: true});
                 }
                 setUsername(data.username);
-                console.log(username)
-
             } finally {
                 setIsFetched(true);
             }
