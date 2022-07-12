@@ -33,6 +33,7 @@ const UserLogin = () => {
                 body: JSON.stringify({
                     data,
                 }),
+                credentials: "include",
             });
 
             const dataLogin: ResDataUser = await res.json();

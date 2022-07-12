@@ -1,10 +1,16 @@
 import React from "react";
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import Spinner from 'react-bootstrap/Spinner';
 
 import styles from './Header.module.css'
 import {Link} from "react-router-dom";
 
-const Header = () => {
+interface Props {
+    username: string;
+    isFetched: boolean;
+}
+
+const Header = (props: Props) => {
     return (
         <>
             <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" className={'sticky-top'}>
@@ -19,12 +25,13 @@ const Header = () => {
                             <Nav.Link className="mx-1" href="#b">Twoje Zapytania</Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">
-                            <NavDropdown className={'fs-4'} title="TwojaNazwa" id="collasible-nav-dropdown">
+                            {props.isFetched ? (<NavDropdown className={'fs-4'} title={props.username} id="collasible-nav-dropdown">
                                 <NavDropdown.Item  className={'fs-5'} href="#action/3.1">Zmiana Nicku</NavDropdown.Item>
                                 <NavDropdown.Item  className={'fs-5'} href="#action/3.2">Zmiana Hasła</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item  className={'fs-5'} href="#action/3.4">Wyloguj</NavDropdown.Item>
-                            </NavDropdown>
+                            </NavDropdown>) : <Nav.Link className={'fs-4'} ><Spinner animation="grow" /></Nav.Link>}
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
