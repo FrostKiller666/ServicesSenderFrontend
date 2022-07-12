@@ -20,6 +20,7 @@ const LoginUserSite = () => {
                 if (data.message !== 'Brak autentykacji') {
                     navigate("/", {replace: true});
                 }
+
             setIsLoading(false);
         })();
     }, []);
@@ -28,8 +29,10 @@ const LoginUserSite = () => {
     return (
         <>
             {isLoading?(<></>):(
-                <><HeaderLogin />
-                    <UserLogin /></>
+                <>
+                    <HeaderLogin />
+                    <UserLogin />
+                </>
             )}
 
         </>

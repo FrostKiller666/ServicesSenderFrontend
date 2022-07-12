@@ -2,8 +2,10 @@ import React from "react";
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import Spinner from 'react-bootstrap/Spinner';
 
+
 import styles from './Header.module.css'
 import {Link} from "react-router-dom";
+import {apiUrl} from "../../config/api";
 
 interface Props {
     username: string;
@@ -11,6 +13,14 @@ interface Props {
 }
 
 const Header = (props: Props) => {
+
+    const  logoutHandler = async () => {
+        const res = await fetch(`${apiUrl}/user/clear-cookie`, {
+            credentials: "include",
+        });
+        await res.json();
+    }
+
     return (
         <>
             <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" className={'sticky-top'}>
@@ -29,9 +39,8 @@ const Header = (props: Props) => {
                                 <NavDropdown.Item  className={'fs-5'} href="#action/3.1">Zmiana Nicku</NavDropdown.Item>
                                 <NavDropdown.Item  className={'fs-5'} href="#action/3.2">Zmiana Hasła</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item  className={'fs-5'} href="#action/3.4">Wyloguj</NavDropdown.Item>
+                                <NavDropdown.Item  className={'fs-5'} as={Link} onClick={logoutHandler} to='/user/login'>Wyloguj</NavDropdown.Item>
                             </NavDropdown>) : <Nav.Link className={'fs-4'} ><Spinner animation="grow" /></Nav.Link>}
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
