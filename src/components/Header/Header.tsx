@@ -36,7 +36,7 @@ const Header = (props: Props) => {
                         </Nav>
                         <Nav className="ms-auto">
                             {props.isFetched ? (<NavDropdown className={'fs-4'} title={props.username} id="collasible-nav-dropdown">
-                                <NavDropdown.Item  className={'fs-5'} href="#action/3.1">Zmiana Nicku</NavDropdown.Item>
+                                <NavDropdown.Item  className={'fs-5'} as={Link} to='/user/change-username'>Zmiana Nicku</NavDropdown.Item>
                                 <NavDropdown.Item  className={'fs-5'} as={Link} to='/user/change-password'>Zmiana Hasła</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item  className={'fs-5'} as={Link} onClick={logoutHandler} to='/user/login'>Wyloguj</NavDropdown.Item>

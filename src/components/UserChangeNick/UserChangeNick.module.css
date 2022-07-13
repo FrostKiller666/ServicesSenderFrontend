@@ -1,0 +1,15 @@
+.container {
+    margin-top: 5rem;
+    width: 28rem;
+}
+
+.errorP {
+    color: #bf1650;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.errorP::before {
+    display: inline;
+    content: "⚠ ";
+}
