@@ -6,6 +6,7 @@ import {RegisterUserSite} from "./views/RegisterUserSite";
 import {LoginUserSite} from "./views/LoginUserSite";
 import {PasswordUserSite} from "./views/PasswordUserSite";
 import {NickUserSite} from "./views/NickUserSite";
+import {OrderSenderSite} from "./views/OrderSenderSite";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path={'/user/register'} element={<RegisterUserSite/>}/>
             <Route path={'/user/change-password'} element={<PasswordUserSite/>}/>
             <Route path={'/user/change-username'} element={<NickUserSite/>}/>
+            <Route path={'/order/new-order'} element={<OrderSenderSite/>}/>
         </Routes>
     </>
   );

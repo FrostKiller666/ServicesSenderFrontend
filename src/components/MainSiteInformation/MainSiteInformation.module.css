@@ -2,10 +2,12 @@
     background-color: #f4f4f5;
     padding: 3rem;
     margin-bottom: 1.5rem;
+    max-width: 90%;
 }
 
 .cardOdd {
     padding: 3rem;
+    max-width: 90%;
 }
 
 .container {

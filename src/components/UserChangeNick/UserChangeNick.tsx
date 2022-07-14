@@ -42,10 +42,12 @@ const UserChangeNick = (props: Props) => {
 
             const dataForm = await res.json();
 
-            if(dataForm !== 'Nick został pomyślnie zmieniony.'){
+            if(dataForm.message !== 'Nick został pomyślnie zmieniony.'){
                 setResError(dataForm.message);
+            } else {
+                setSuccess(dataForm.message);
             }
-            setSuccess(dataForm.message);
+
 
         } finally {
             setLoading(false);

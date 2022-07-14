@@ -29,7 +29,7 @@ const Header = (props: Props) => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-5 fs-5 p-0">
-                            <Nav.Link className="mx-1" href="#features">Złóż Zamówienie</Nav.Link>
+                            <Nav.Link className="mx-1" as={Link} to={'/order/new-order'}>Złóż Zamówienie</Nav.Link>
                             <Nav.Link className="mx-1" href="#pricing">Twoje Zamówienia</Nav.Link>
                             <Nav.Link className="mx-1" href="#a">Zapytaj o dostępnść</Nav.Link>
                             <Nav.Link className="mx-1" href="#b">Twoje Zapytania</Nav.Link>
