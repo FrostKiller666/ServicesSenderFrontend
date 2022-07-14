@@ -25,7 +25,7 @@ const OrderSenderForm = (props: Props) => {
     const navigate = useNavigate();
     const {register, formState: {errors}, handleSubmit, reset} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
-    const [id, setId] = useState('');
+    const [emailSent, setEmailSent] = useState('');
 
 
     const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
@@ -66,7 +66,8 @@ const OrderSenderForm = (props: Props) => {
                             ...data
                         })
                     });
-                    console.log(await res.json());
+                    const resEmail = await res.json()
+                    setEmailSent(resEmail.message);
             }
 
         } finally {
@@ -79,10 +80,11 @@ const OrderSenderForm = (props: Props) => {
     if (loading) {
         return <h2>Trwa proces zamawiania...</h2>;
     }
-    // @TODO New component UserRegisterSuccess.tsx for redirect to Login site
-    // if (id) {
-    //     return <h2>Twoje konto u numerze <br/> ID: {id} <br/> zostało utworzone.</h2>
-    // }
+
+    //@TODO New component UserRegisterSuccess.tsx for redirect to Login site
+    if (emailSent === 'Email został wysłany.') {
+        return <h2>{emailSent}</h2>
+    }
 
     return (
         <>

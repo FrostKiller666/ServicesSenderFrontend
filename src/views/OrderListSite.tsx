@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-
 import {Header} from "../components/Header/Header";
-import {MainSiteInformation} from "../components/MainSiteInformation/MainSiteInformation";
+import {OrderListTable} from "../components/OrderListTable/OrderListTable";
+import {useNavigate} from "react-router-dom";
 import {apiUrl} from "../config/api";
 
-const MainUserSite = () => {
+const OrderListSite = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
+    const [userId, setUserID] = useState('');
     const [isFetched, setIsFetched] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -23,6 +23,7 @@ const MainUserSite = () => {
                     navigate("/user/login", {replace: true});
                 }
                 setUsername(data.username);
+                setUserID(data.id)
             } finally {
                 setIsFetched(true);
                 setIsLoading(false);
@@ -30,23 +31,19 @@ const MainUserSite = () => {
 
         })();
     }, []);
-
     return (
         <>
             {isLoading ? (<></>) :
                 (
                     <>
-                        <Header isFetched={isFetched} username={username}/>
-                        <MainSiteInformation/>
+            <Header isFetched={isFetched} username={username} />
+            <OrderListTable userId={userId}/>
                     </>
                 )}
-
         </>
-
-
     );
 }
 
 export {
-    MainUserSite,
+    OrderListSite,
 }
