@@ -137,7 +137,7 @@ const QuestionSenderForm = (props: Props) => {
                         <Button className={`me-2 ${styles.customStyleButton}`} variant="primary" type="submit">
                             Wyślij
                         </Button>
-                        <Button className={`float-end ${styles.customStyleButton}`} variant="secondary" type="button" onClick={() => navigate("/",{replace: true})}>
+                        <Button className={`float-end ${styles.customStyleButton}`} variant="secondary" type="button" onClick={() => navigate("/")}>
                             Anuluj
                         </Button>
                     </Form.Group>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {SubmitHandler, useForm} from "react-hook-form";
 
@@ -21,6 +21,7 @@ const UserLogin = () => {
     const {register, formState: {errors}, handleSubmit} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState('');
+    const [areCredentialsValid, setAreCredentialsValid] = useState<boolean | undefined>();
     const [errorRes, setErrorRes] = useState<boolean | string | undefined>(false);
 
     const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
@@ -42,8 +43,10 @@ const UserLogin = () => {
 
             if(dataLogin.message !== 'Pomyślnie zalogowano.'){
                 setErrorRes(dataLogin.message);
+                setAreCredentialsValid(false)
             } else {
                 setSuccess(dataLogin.message)
+                setAreCredentialsValid(true)
             }
 
         } finally {
@@ -52,9 +55,12 @@ const UserLogin = () => {
     }
 
 
-    if (success === 'Pomyślnie zalogowano.') {
-        return navigate("/");
-    }
+    useEffect(() => {
+        if (areCredentialsValid) {
+           navigate("/");
+        }
+    }, [areCredentialsValid])
+
     // @TODO Its make only sens for users who's got very slow internet, probably i will delete it.
     if (loading) {
         return <h2>Trwa proces logowania...</h2>;

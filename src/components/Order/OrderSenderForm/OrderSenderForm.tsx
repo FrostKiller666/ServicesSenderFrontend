@@ -16,6 +16,7 @@ interface FormRegisterType {
     price: string;
     information: string;
     guarantee: string | boolean;
+    userId: string;
 }
 
 interface Props {
@@ -38,19 +39,20 @@ const OrderSenderForm = (props: Props) => {
     const {register, formState: {errors}, handleSubmit, reset, watch} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
     const [emailSent, setEmailSent] = useState('');
-    const [order, SetOrder] = useState([]);
+    const [orders, setOrders] = useState<FormRegisterType[]>([]);
     const watchAllFields = watch();
 
+     const handleAddOrder = () => {
+         const guarantee = watchAllFields.guarantee ? 'TAK' : 'NIE'
+         setOrders([...orders, {...watchAllFields, userId: props.resId, guarantee }])
+     }
 
     const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
-        if(data.guarantee === false) {
-            data.guarantee = 'NIE'
-        }
-        if(data.guarantee === true) {
-            data.guarantee = 'Tak'
-        }
+         const guarantee = data.guarantee ? 'TAK' : 'NIE';
 
         setLoading(true);
+        const ordersToSend = orders;
+        ordersToSend.push({...watchAllFields, userId: props.resId, guarantee});
 
         try {
             const res = await fetch(`${apiUrl}/order/new-order`, {
@@ -59,8 +61,7 @@ const OrderSenderForm = (props: Props) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    userId: props.resId,
-                    ...data
+                    ...ordersToSend
                 })
             });
 
@@ -77,7 +78,7 @@ const OrderSenderForm = (props: Props) => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        ...data
+                        ...ordersToSend
                     })
                 });
                 const resEmail = await res.json()
@@ -171,13 +172,16 @@ const OrderSenderForm = (props: Props) => {
                             Wyślij
                         </Button>
                         <Button className={'me-2'} variant="primary" type="button" onClick={() => {
+                            handleAddOrder();
                             reset(defaultState, {
                                 keepErrors: false
                             });
                         }}>
                             Dodaj nowe zamówienie
                         </Button>
-                        <Button className={'float-end'} variant="secondary" type="button" onClick={() => navigate("/",{replace: true})}>
+                        <Button className={'float-end'} variant="secondary" type="button" onClick={() => {
+                            navigate("/",{replace: true})
+                        }} >
                             Anuluj
                         </Button>
                     </Form.Group>
