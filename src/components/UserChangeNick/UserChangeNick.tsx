@@ -5,6 +5,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 
 import styles from "../UserRegister/UserRegister.module.css";
 import {apiUrl} from "../../config/api";
+import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
 
 interface FormRegisterType {
     username: string;
@@ -57,9 +58,9 @@ const UserChangeNick = (props: Props) => {
     if (loading) {
         return <h2>Trwa proces zmiany nicku...</h2>;
     }
-// @TODO New component for redirect to Login site
+
     if (success) {
-        return <h2>{success}</h2>
+        return <LoadingSuccess message={success}/>
     }
 
 

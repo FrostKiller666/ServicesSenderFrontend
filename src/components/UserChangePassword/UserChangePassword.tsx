@@ -4,6 +4,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {apiUrl} from "../../config/api";
 import {useNavigate} from "react-router-dom";
+import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
 
 interface FormRegisterType {
     oldPassword: string;
@@ -59,9 +60,9 @@ const UserChangePassword = (props: Props) => {
     if (loading) {
         return <h2>Trwa proces zmiany hasła...</h2>;
     }
-    // @TODO New component for redirect to Login site
+
     if (success) {
-        return <h2>{success}</h2>
+        return <LoadingSuccess message={success}/>
     }
 
     return (

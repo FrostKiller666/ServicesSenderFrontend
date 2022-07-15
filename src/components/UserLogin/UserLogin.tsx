@@ -4,6 +4,8 @@ import {SubmitHandler, useForm} from "react-hook-form";
 
 import styles from "./UserLogin.module.css";
 import {apiUrl} from "../../config/api";
+import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
+import {useNavigate} from "react-router-dom";
 
 interface FormRegisterType {
     email: string;
@@ -16,6 +18,7 @@ interface ResDataUser {
 }
 
 const UserLogin = () => {
+    const navigate = useNavigate();
     const {register, formState: {errors}, handleSubmit} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState('');
@@ -47,7 +50,7 @@ const UserLogin = () => {
 
 
     if (id) {
-        return <h2>ZUżytkownik o numerze <br/> ID: {id} <br/>został pomyślnie zalogowany.</h2>
+        return navigate("/",{replace: true})
     }
     // @TODO Its make only sens for users who's got very slow internet, probably i will delete it.
     if (loading) {

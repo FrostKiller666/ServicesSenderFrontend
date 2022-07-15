@@ -26,7 +26,7 @@ const OrderListTableElements = (props: Props) => {
                 <td >{data.quality}</td>
                 <td >{data.price}</td>
                 <td >{data.guarantee}</td>
-                <td><Button size="sm" variant="dark">TAK/NIE</Button></td>
+                <td><Button size="sm" variant="dark" >TAK/NIE</Button></td>
             </tr>
             </tbody>
         );
@@ -35,7 +35,7 @@ const OrderListTableElements = (props: Props) => {
     return (
         <>
             <Container fluid={"sm"} className={`${styles.container} shadow p-4 mb-5 bg-body rounded`}>
-                <h2 className={"mt-2 mb-4"}>Złóż Zamówienie: </h2>
+                <h2 className={"mt-2 mb-4"}>Twoje Zamówienia: </h2>
                 <Table striped>
                     <thead>
                     <tr>

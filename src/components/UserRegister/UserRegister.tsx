@@ -4,6 +4,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 
 import styles from "./UserRegister.module.css";
 import {apiUrl} from "../../config/api";
+import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
 
 // @TODO if reusable just move to folder utils
 interface FormRegisterType {
@@ -49,7 +50,7 @@ const UserRegister = () => {
     }
     // @TODO New component UserRegisterSuccess.tsx for redirect to Login site
     if (id) {
-        return <h2>Twoje konto u numerze <br/> ID: {id} <br/> zostało utworzone.</h2>
+        return <LoadingSuccess message={`Użytkownik został pomyślnie zarejestrowany.`}/>
     }
 
     return (

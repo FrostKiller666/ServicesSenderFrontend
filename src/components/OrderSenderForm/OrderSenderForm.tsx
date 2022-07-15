@@ -5,6 +5,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import styles from "./OrderSenderForm.module.css"
 import {apiUrl} from "../../config/api";
 import {useNavigate} from "react-router-dom";
+import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
 
 interface FormRegisterType {
     pointName: string;
@@ -81,9 +82,8 @@ const OrderSenderForm = (props: Props) => {
         return <h2>Trwa proces zamawiania...</h2>;
     }
 
-    //@TODO New component UserRegisterSuccess.tsx for redirect to Login site
     if (emailSent === 'Email został wysłany.') {
-        return <h2>{emailSent}</h2>
+        return <LoadingSuccess message={emailSent}/>
     }
 
     return (
