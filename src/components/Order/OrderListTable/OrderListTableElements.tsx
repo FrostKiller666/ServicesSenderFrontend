@@ -2,31 +2,46 @@ import React, {useState} from "react";
 import {OrderEntityForUser} from 'types';
 import {Button, Container, Table} from "react-bootstrap";
 import styles from "../OrderSenderForm/OrderSenderForm.module.css";
+import {apiUrl} from "../../../config/api";
 
 interface Props {
     listOfUserOrder: OrderEntityForUser[] | null;
 }
 
 const OrderListTableElements = (props: Props) => {
-    const [dataForDisable, setDataForDisable] = useState(props.listOfUserOrder?.map(el => [el.id, false]));
+    const [dataForDisable, setDataForDisable] = useState(props.listOfUserOrder?.map(el => [el.id, el.arrived]));
 
     if (props.listOfUserOrder === null) {
         return <h2>Twoje zamówienia są puste, warto było by coś zamówic i naprawić.</h2>
     }
 
-    const handleButtonClick = (id: string) => {
-        setDataForDisable(dataForDisable?.map((row) => {
+    const handleButtonClick = async (id: string) => {
+
+        setDataForDisable(dataForDisable?.map((row: any) => {
             if (row[0] === id) {
-                return [id, !row[1]];
+                return [id, 1];
             }
             return row;
         }));
+
+        await fetch(`${apiUrl}/order/order-list`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id,
+                arrived: 1
+            }),
+            credentials: "include",
+        });
+
     };
 
     const elementList = props.listOfUserOrder.map((data, index) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         data.color === '' ? data.color = 'BRAK' : data.color;
-        const isDisabled = dataForDisable?.find((row) => row[0] === data.id)?.[1] as boolean;
+        const isDisabled = dataForDisable?.find((row) => row[0] === data.id)?.[1] === 1;
 
         return (
             <tbody key={data.id}>
