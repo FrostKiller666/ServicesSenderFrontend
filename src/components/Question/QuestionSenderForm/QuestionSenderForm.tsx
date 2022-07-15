@@ -88,6 +88,8 @@ const QuestionSenderForm = (props: Props) => {
                             <Form.Label>Nazwa Punktu:</Form.Label>
                             <Form.Control {...register('pointName', {
                                 required: "To pole nie może być puste!",
+                                maxLength: 30,
+                                minLength: 4
                             })}/>
                             {errors.pointName && <p className={styles.errorP}>{errors.pointName.message}</p>}
                         </Form.Group>
@@ -96,6 +98,8 @@ const QuestionSenderForm = (props: Props) => {
                             <Form.Label>Nazwa modelu:</Form.Label>
                             <Form.Control {...register('model', {
                                 required: "To pole nie może być puste!",
+                                maxLength: 45,
+                                minLength: 5
                             })}/>
                             {errors.model && <p className={styles.errorP}>{errors.model.message}</p>}
                         </Form.Group>
@@ -104,6 +108,8 @@ const QuestionSenderForm = (props: Props) => {
                             <Form.Label>Nazwa części:</Form.Label>
                             <Form.Control {...register('part', {
                                 required: "To pole nie może być puste!",
+                                maxLength: 70,
+                                minLength: 4
                             })}/>
                             {errors.part && <p className={styles.errorP}>{errors.part.message}</p>}
                         </Form.Group>
