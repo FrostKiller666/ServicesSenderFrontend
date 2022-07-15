@@ -24,10 +24,22 @@ interface Props {
 
 const OrderSenderForm = (props: Props) => {
     const navigate = useNavigate();
-    const {register, formState: {errors}, handleSubmit, reset} = useForm<FormRegisterType>();
+    const {register, formState: {errors}, handleSubmit, reset, watch} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
     const [emailSent, setEmailSent] = useState('');
+    const [order, SetOrder] = useState([]);
+    const watchAllFields = watch();
 
+    const defaultState = {
+        pointName: "",
+        model: "",
+        part: "",
+        color: "",
+        quality: "Oryginał",
+        price: "",
+        information: "",
+        guarantee: false
+    }
 
     const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
         if(data.guarantee === false) {
@@ -75,7 +87,6 @@ const OrderSenderForm = (props: Props) => {
             setLoading(false);
         }
     }
-
 
     // @TODO Add spinner for improve user experience
     if (loading) {
@@ -158,7 +169,11 @@ const OrderSenderForm = (props: Props) => {
                         <Button className={'me-2'} variant="primary" type="submit">
                             Wyślij
                         </Button>
-                        <Button className={'me-2'} variant="primary" type="submit" >
+                        <Button className={'me-2'} variant="primary" type="button" onClick={() => {
+                            reset(defaultState, {
+                                keepErrors: false
+                            });
+                        }}>
                             Dodaj nowe zamówienie
                         </Button>
                         <Button className={'float-end'} variant="secondary" type="button" onClick={() => navigate("/",{replace: true})}>
