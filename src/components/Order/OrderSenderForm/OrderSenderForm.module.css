@@ -1,0 +1,24 @@
+.container {
+    margin-top: 5rem;
+    min-width: 26rem;
+    max-width: 70rem;
+}
+
+.errorP {
+    color: #bf1650;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.errorP::before {
+    display: inline;
+    content: "⚠ ";
+}
+
+.customStyleButton {
+    width: 35%;
+}
+.customStyleButtonQuestion {
+
+    min-width: 90%;
+}
