@@ -3,9 +3,9 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 import styles from "./OrderSenderForm.module.css"
-import {apiUrl} from "../../config/api";
+import {apiUrl} from "../../../config/api";
 import {useNavigate} from "react-router-dom";
-import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
+import {LoadingSuccess} from "../../Loadingsuccess/LoadingSuccess";
 
 interface FormRegisterType {
     pointName: string;

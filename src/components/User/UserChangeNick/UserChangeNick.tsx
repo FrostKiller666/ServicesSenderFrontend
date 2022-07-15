@@ -4,8 +4,8 @@ import {useNavigate} from "react-router-dom";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 
 import styles from "../UserRegister/UserRegister.module.css";
-import {apiUrl} from "../../config/api";
-import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
+import {apiUrl} from "../../../config/api";
+import {LoadingSuccess} from "../../Loadingsuccess/LoadingSuccess";
 
 interface FormRegisterType {
     username: string;

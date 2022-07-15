@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import {HeaderLogin} from "../components/Header/HeaderLogin";
-import {OrderSenderForm} from "../components/OrderSenderForm/OrderSenderForm";
-import {apiUrl} from "../config/api";
+import {apiUrl} from "../../config/api";
 import {UserEntity} from 'types';
+import {HeaderLogin} from "../../components/Header/HeaderLogin";
+import {UserChangeNick} from "../../components/User/UserChangeNick/UserChangeNick";
 
-const OrderSenderSite = () => {
+const NickUserSite = () => {
+
     const navigate = useNavigate();
     const [userData, setUserData] = useState<UserEntity>({
         id: '',
@@ -34,12 +35,13 @@ const OrderSenderSite = () => {
         })();
     }, []);
 
+
     return (
         <>
             {isLoading ? (<></>) : (
                 <>
-                    <HeaderLogin />
-                    <OrderSenderForm resId={userData.id}/>
+                    <HeaderLogin/>
+                    <UserChangeNick resId={userData.id} resUsername={userData.username}/>
                 </>
             )}
         </>
@@ -47,5 +49,5 @@ const OrderSenderSite = () => {
 }
 
 export {
-    OrderSenderSite,
+    NickUserSite,
 }

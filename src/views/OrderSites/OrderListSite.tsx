@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {Header} from "../components/Header/Header";
-import {OrderListTable} from "../components/OrderListTable/OrderListTable";
+import {Header} from "../../components/Header/Header";
+import {OrderListTable} from "../../components/Order/OrderListTable/OrderListTable";
 import {useNavigate} from "react-router-dom";
-import {apiUrl} from "../config/api";
+import {apiUrl} from "../../config/api";
 
 const OrderListSite = () => {
     const navigate = useNavigate();

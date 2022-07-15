@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 
-import {UserLogin} from "../components/UserLogin/UserLogin";
-import {HeaderLogin} from "../components/Header/HeaderLogin";
-import {apiUrl} from "../config/api";
+import {UserLogin} from "../../components/User/UserLogin/UserLogin";
+import {HeaderLogin} from "../../components/Header/HeaderLogin";
+import {apiUrl} from "../../config/api";
 import {useNavigate} from "react-router-dom";
 
 

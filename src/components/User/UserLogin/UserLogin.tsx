@@ -3,8 +3,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 import styles from "./UserLogin.module.css";
-import {apiUrl} from "../../config/api";
-import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
+import {apiUrl} from "../../../config/api";
 import {useNavigate} from "react-router-dom";
 
 interface FormRegisterType {
@@ -21,7 +20,7 @@ const UserLogin = () => {
     const navigate = useNavigate();
     const {register, formState: {errors}, handleSubmit} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
-    const [id, setId] = useState('');
+    const [success, setSuccess] = useState('');
     const [errorRes, setErrorRes] = useState<boolean | string | undefined>(false);
 
     const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
@@ -40,8 +39,12 @@ const UserLogin = () => {
             });
 
             const dataLogin: ResDataUser = await res.json();
-            setErrorRes(dataLogin.message);
-            setId(dataLogin.userId);
+
+            if(dataLogin.message !== 'Pomyślnie zalogowano.'){
+                setErrorRes(dataLogin.message);
+            } else {
+                setSuccess(dataLogin.message)
+            }
 
         } finally {
             setLoading(false);
@@ -49,8 +52,8 @@ const UserLogin = () => {
     }
 
 
-    if (id) {
-        return navigate("/",{replace: true})
+    if (success === 'Pomyślnie zalogowano.') {
+        return navigate("/");
     }
     // @TODO Its make only sens for users who's got very slow internet, probably i will delete it.
     if (loading) {

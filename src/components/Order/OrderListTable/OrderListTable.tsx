@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {OrderListTableElements} from "./OrderListTableElements";
 
 import {OrderEntityForUser} from 'types';
-import {apiUrl} from "../../config/api";
+import {apiUrl} from "../../../config/api";
 
 interface Props {
     userId: string;

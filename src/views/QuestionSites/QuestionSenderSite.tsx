@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {HeaderLogin} from "../components/Header/HeaderLogin";
+import {HeaderLogin} from "../../components/Header/HeaderLogin";
 import {useNavigate} from "react-router-dom";
 
-import {apiUrl} from "../config/api";
+import {apiUrl} from "../../config/api";
 import {UserEntity} from 'types';
-import {QuestionSenderForm} from "../components/QuestionSenderForm/QuestionSenderForm";
+import {QuestionSenderForm} from "../../components/Question/QuestionSenderForm/QuestionSenderForm";
 
 const QuestionSenderSite = () => {
     const navigate = useNavigate();

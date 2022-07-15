@@ -1,14 +1,15 @@
 import React from 'react';
 import {Route, Routes} from "react-router";
 
-import {MainUserSite} from "./views/MainUserSite";
-import {RegisterUserSite} from "./views/RegisterUserSite";
-import {LoginUserSite} from "./views/LoginUserSite";
-import {PasswordUserSite} from "./views/PasswordUserSite";
-import {NickUserSite} from "./views/NickUserSite";
-import {OrderSenderSite} from "./views/OrderSenderSite";
-import {OrderListSite} from "./views/OrderListSite";
-import {QuestionSenderSite} from "./views/QuestionSenderSite";
+import {MainUserSite} from "./views/UserSites/MainUserSite";
+import {RegisterUserSite} from "./views/UserSites/RegisterUserSite";
+import {LoginUserSite} from "./views/UserSites/LoginUserSite";
+import {PasswordUserSite} from "./views/UserSites/PasswordUserSite";
+import {NickUserSite} from "./views/UserSites/NickUserSite";
+import {OrderSenderSite} from "./views/OrderSites/OrderSenderSite";
+import {OrderListSite} from "./views/OrderSites/OrderListSite";
+import {QuestionSenderSite} from "./views/QuestionSites/QuestionSenderSite";
+import {QuestionListSide} from "./views/QuestionSites/QuestionListSide";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path={'/order/new-order'} element={<OrderSenderSite/>}/>
             <Route path={'/order/order-list'} element={<OrderListSite/>}/>
             <Route path={'/question/new-question'} element={<QuestionSenderSite/>}/>
+            <Route path={'/question/question-list'} element={<QuestionListSide/>}/>
         </Routes>
     </>
   );

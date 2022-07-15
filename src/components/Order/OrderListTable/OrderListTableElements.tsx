@@ -24,7 +24,7 @@ const OrderListTableElements = (props: Props) => {
                 <td >{data.part}</td>
                 <td >{data.color}</td>
                 <td >{data.quality}</td>
-                <td >{data.price}</td>
+                <td >{data.price} zł</td>
                 <td >{data.guarantee}</td>
                 <td><Button size="sm" variant="dark" >TAK/NIE</Button></td>
             </tr>
@@ -34,7 +34,7 @@ const OrderListTableElements = (props: Props) => {
 
     return (
         <>
-            <Container fluid={"sm"} className={`${styles.container} shadow p-4 mb-5 bg-body rounded`}>
+            <Container fluid={"sm"} className={`${styles.container} shadow p-4 mb-5 bg-body rounded table-responsive-md`}>
                 <h2 className={"mt-2 mb-4"}>Twoje Zamówienia: </h2>
                 <Table striped>
                     <thead>

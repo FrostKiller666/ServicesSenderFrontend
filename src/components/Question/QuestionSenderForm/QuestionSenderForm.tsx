@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import styles from "../OrderSenderForm/OrderSenderForm.module.css";
+import styles from "../../Order/OrderSenderForm/OrderSenderForm.module.css";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
-import {apiUrl} from "../../config/api";
-import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
+import {apiUrl} from "../../../config/api";
+import {LoadingSuccess} from "../../Loadingsuccess/LoadingSuccess";
 
 
 interface FormRegisterType {
