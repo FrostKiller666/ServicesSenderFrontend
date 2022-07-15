@@ -1,11 +1,11 @@
 import React, {useState} from "react";
+import styles from "../OrderSenderForm/OrderSenderForm.module.css";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {SubmitHandler, useForm} from "react-hook-form";
-
-import styles from "./OrderSenderForm.module.css"
-import {apiUrl} from "../../config/api";
 import {useNavigate} from "react-router-dom";
+import {apiUrl} from "../../config/api";
 import {LoadingSuccess} from "../Loadingsuccess/LoadingSuccess";
+
 
 interface FormRegisterType {
     pointName: string;
@@ -13,47 +13,26 @@ interface FormRegisterType {
     part: string;
     color: string;
     quality: string;
-    price: string;
     information: string;
-    guarantee: string | boolean;
 }
 
 interface Props {
     resId: string;
 }
 
-const defaultState = {
-    pointName: "",
-    model: "",
-    part: "",
-    color: "",
-    quality: "Oryginał",
-    price: "",
-    information: "",
-    guarantee: false
-}
 
-const OrderSenderForm = (props: Props) => {
+const QuestionSenderForm = (props: Props) => {
     const navigate = useNavigate();
-    const {register, formState: {errors}, handleSubmit, reset, watch} = useForm<FormRegisterType>();
+    const {register, formState: {errors}, handleSubmit} = useForm<FormRegisterType>();
     const [loading, setLoading] = useState(false);
     const [emailSent, setEmailSent] = useState('');
-    const [order, SetOrder] = useState([]);
-    const watchAllFields = watch();
-
 
     const onSubmit: SubmitHandler<FormRegisterType> = async (data) => {
-        if(data.guarantee === false) {
-            data.guarantee = 'NIE'
-        }
-        if(data.guarantee === true) {
-            data.guarantee = 'Tak'
-        }
 
         setLoading(true);
 
         try {
-            const res = await fetch(`${apiUrl}/order/new-order`, {
+            const res = await fetch(`${apiUrl}/question/new-question`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +50,7 @@ const OrderSenderForm = (props: Props) => {
                 console.log(dataForm.message);
             } else {
 
-                const res = await fetch(`${apiUrl}/order/new-order/send-email`, {
+                const res = await fetch(`${apiUrl}/question/new-question/send-email`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -103,7 +82,7 @@ const OrderSenderForm = (props: Props) => {
             <Container fluid={"sm"} className={`${styles.container} shadow p-4 mb-5 bg-body rounded`}>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    <h2 className={"mt-2 mb-4"}>Złóż Zamówienie: </h2>
+                    <h2 className={"mt-2 mb-4"}>Zapytaj o dostępność części: </h2>
                     <Row className="mb-3">
                         <Form.Group as={Col} controlId="formGridPointName">
                             <Form.Label>Nazwa Punktu:</Form.Label>
@@ -147,37 +126,18 @@ const OrderSenderForm = (props: Props) => {
                             </Form.Select>
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridPrice">
-                            <Form.Label>Cena dla klienta:</Form.Label>
-                            <Form.Control placeholder="Wpisz 0 jeśli gwarancja" type="number" {...register('price', {
-                                required: "To pole nie może być puste!",
-                                min: 0,
-                            })}/>
-                            {errors.price && <p className={styles.errorP}>{errors.price.message}</p>}
-                        </Form.Group>
                     </Row>
 
                     <Form.Group className="mb-3" controlId="formTextAreaInformation">
                         <Form.Label>Dodatkowe informacje:</Form.Label>
-                        <Form.Control as="textarea" rows={3} placeholder="Uwagi do zamówienia." {...register('information')}/>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" id="formGridCheckboxGuarantee">
-                        <Form.Check type="checkbox"  label="Czy część będzie użyta w ramach gwarancji ?"{...register('guarantee')}/>
+                        <Form.Control as="textarea" rows={3} placeholder="Uwagi do zapytania." {...register('information')}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className={'mt-4'} controlId="formButtonGroup">
-                        <Button className={'me-2'} variant="primary" type="submit">
+                        <Button className={`me-2 ${styles.customStyleButton}`} variant="primary" type="submit">
                             Wyślij
                         </Button>
-                        <Button className={'me-2'} variant="primary" type="button" onClick={() => {
-                            reset(defaultState, {
-                                keepErrors: false
-                            });
-                        }}>
-                            Dodaj nowe zamówienie
-                        </Button>
-                        <Button className={'float-end'} variant="secondary" type="button" onClick={() => navigate("/",{replace: true})}>
+                        <Button className={`float-end ${styles.customStyleButton}`} variant="secondary" type="button" onClick={() => navigate("/",{replace: true})}>
                             Anuluj
                         </Button>
                     </Form.Group>
@@ -189,5 +149,5 @@ const OrderSenderForm = (props: Props) => {
 }
 
 export {
-    OrderSenderForm,
+    QuestionSenderForm,
 }

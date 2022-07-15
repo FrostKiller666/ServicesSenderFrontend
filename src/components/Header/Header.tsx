@@ -31,7 +31,7 @@ const Header = (props: Props) => {
                         <Nav className="ms-5 fs-5 p-0">
                             <Nav.Link className="mx-1" as={Link} to={'/order/new-order'}>Złóż Zamówienie</Nav.Link>
                             <Nav.Link className="mx-1" as={Link} to={'/order/order-list'}>Twoje Zamówienia</Nav.Link>
-                            <Nav.Link className="mx-1" href="#a">Zapytaj o dostępnść</Nav.Link>
+                            <Nav.Link className="mx-1" as={Link} to={'/question/new-question'}>Zapytaj o dostępnść</Nav.Link>
                             <Nav.Link className="mx-1" href="#b">Twoje Zapytania</Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">

@@ -8,6 +8,7 @@ import {PasswordUserSite} from "./views/PasswordUserSite";
 import {NickUserSite} from "./views/NickUserSite";
 import {OrderSenderSite} from "./views/OrderSenderSite";
 import {OrderListSite} from "./views/OrderListSite";
+import {QuestionSenderSite} from "./views/QuestionSenderSite";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path={'/user/change-username'} element={<NickUserSite/>}/>
             <Route path={'/order/new-order'} element={<OrderSenderSite/>}/>
             <Route path={'/order/order-list'} element={<OrderListSite/>}/>
+            <Route path={'/question/new-question'} element={<QuestionSenderSite/>}/>
         </Routes>
     </>
   );

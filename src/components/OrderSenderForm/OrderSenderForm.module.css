@@ -14,3 +14,7 @@
     display: inline;
     content: "⚠ ";
 }
+
+.customStyleButton {
+    width: 35%;
+}
